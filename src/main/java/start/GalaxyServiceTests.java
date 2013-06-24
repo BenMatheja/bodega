@@ -11,17 +11,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.BeforeTransaction;
 import org.springframework.transaction.annotation.Transactional;
 
-
-@SuppressWarnings("unused")
 @ContextConfiguration( locations = {"classpath:/META-INF/application-context.xml"})
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 public class GalaxyServiceTests {
-	
-//	@Autowired
-//	private GalaxyService galaxyService;
-	
+	@Autowired
+	private GalaxyService galaxyService;
 	@Autowired
 	public Neo4jTemplate template;
 
@@ -33,12 +28,11 @@ public class GalaxyServiceTests {
 	
 	@Test
 	public void allowWorldCreation(){
+		World abc = new World("Erde",1);
+		template.save(abc);
 //		GraphDatabaseService	 graphDatabaseService =  new GraphDatabaseFactory().newEmbeddedDatabase( "target/graph.db" );
 //		Node abc = graphDatabaseService.createNode();
 //		abc.setProperty("name","ben");
-		
-		World abc = new World("Erde",1);
-		template.save(abc);
 //		World myWorld = galaxyService.createWorld("mine", 0);
 //        Iterable<World> foundWorlds = galaxyService.getAllWorlds();
 //        World mine = foundWorlds.iterator().next();

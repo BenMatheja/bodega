@@ -1,7 +1,7 @@
 <project>
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.bodega</groupId>
-  <artifactId>bodega - neo4j nosql dev environment</artifactId>
+  <artifactId>bodega</artifactId>
   <version>1</version>
   <dependencies>
   		<dependency>

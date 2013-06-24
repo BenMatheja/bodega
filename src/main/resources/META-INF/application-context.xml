@@ -11,14 +11,17 @@
             http://www.springframework.org/schema/data/neo4j
             http://www.springframework.org/schema/data/neo4j/spring-neo4j.xsd">
             
+
     <context:spring-configured/>
-	
+	<context:annotation-config/>
+<!-- 	<context:component-scan base-package="start"></context:component-scan> -->
 	<bean id="graphDatabaseService" class="org.neo4j.kernel.EmbeddedGraphDatabase"
     destroy-method="shutdown">
-	<constructor-arg index="0" value="target/graph.db" />
-	<constructor-arg index="1">
-		<map><entry key="enable_remote_shell" value="true"/></map>
-    </constructor-arg>
+    <constructor-arg index="0" value="target/graph.db" />
+<!-- 	<constructor-arg index="1"> -->
+<!-- 		<map><entry key="enable_remote_shell" value="true"/></map> -->
+<!--     </constructor-arg> -->
+     
   
 </bean>
 
