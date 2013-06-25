@@ -1,10 +1,6 @@
 package Repositories;
 
 import org.springframework.data.neo4j.repository.GraphRepository;
+import components.World;
 
-import start.World;
-
-
-public interface WorldRepository extends GraphRepository<World> {
-	
-}
+public interface WorldRepository extends GraphRepository<World> {}

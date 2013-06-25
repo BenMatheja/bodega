@@ -14,19 +14,8 @@
 
     <context:spring-configured/>
 	<context:annotation-config/>
-<!-- 	<context:component-scan base-package="start"></context:component-scan> -->
-	<bean id="graphDatabaseService" class="org.neo4j.kernel.EmbeddedGraphDatabase"
-    destroy-method="shutdown">
-    <constructor-arg index="0" value="target/graph.db" />
-<!-- 	<constructor-arg index="1"> -->
-<!-- 		<map><entry key="enable_remote_shell" value="true"/></map> -->
-<!--     </constructor-arg> -->
-     
-  
-</bean>
-
-<!-- <bean id="serverWrapper" class="org.neo4j.server.WrappingNeoServerBootstrapper"  -->
-<!-- 	init-method="start" destroy-method="stop"> -->
-<!-- 	<constructor-arg ref="graphDatabaseService"/> -->
-<!-- </bean> -->
+	<context:component-scan base-package="components"/>
+	<neo4j:config graphDatabaseService="graphDatabaseService"/>
+	<neo4j:config storeDirectory="target/graph.db"/>
+	<neo4j:repositories base-package="Repositories"/>
 </beans>
