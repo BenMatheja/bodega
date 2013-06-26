@@ -30,11 +30,11 @@ public class GalaxyServiceTests {
 	@Autowired
 	public Neo4jTemplate template;
 
-	@Rollback(false)
-	@BeforeTransaction
-	public void cleanUpGraph() {
-		Neo4jHelper.cleanDb(template);
-	}
+//	@Rollback(false)
+//	@BeforeTransaction
+//	public void cleanUpGraph() {
+//		Neo4jHelper.cleanDb(template);
+//	}
 
 	@Test
     public void shouldAllowDirectWorldCreation() {

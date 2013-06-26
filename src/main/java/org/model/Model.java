@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.neo4j.annotation.Indexed;
+import org.springframework.data.neo4j.annotation.NodeEntity;
 import org.springframework.data.neo4j.annotation.RelatedTo;
-
+@NodeEntity
 public class Model extends AbstractEntity {
-	@Indexed(unique = true)
-	String id;
 	String title;
 
 	@RelatedTo(type = "IS_AN")
@@ -25,15 +24,6 @@ public class Model extends AbstractEntity {
 		this.title = title;
 
 	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
 	public Language getLanguage() {
 		return language;
 	}
@@ -46,16 +36,16 @@ public class Model extends AbstractEntity {
 		return Edges;
 	}
 
-	public void setEdges(List<Edge> edges) {
-		Edges = edges;
+	public void addEdge(Edge edge) {
+		Edges.add(edge);
 	}
 
 	public List<Vertex> getVertices() {
 		return Vertices;
 	}
 
-	public void setVertices(List<Vertex> vertices) {
-		Vertices = vertices;
+	public void addVertex(Vertex vertex) {
+		Vertices.add( vertex);
 	}
 
 	public void setTitle(String title) {

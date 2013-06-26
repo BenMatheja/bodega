@@ -13,7 +13,7 @@
 
 	<context:spring-configured />
 	<context:annotation-config />
-	<context:component-scan base-package="org.components" />
+	<context:component-scan base-package="org.components,org.model" />
 	<neo4j:config graphDatabaseService="graphDatabaseService" />
 	<neo4j:config storeDirectory="target/main/graph.db" />
 	<neo4j:repositories base-package="org.repositories" />
