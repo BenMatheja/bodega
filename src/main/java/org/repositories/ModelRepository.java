@@ -1,7 +1,7 @@
-package Repositories;
-import model.Model;
+package org.repositories;
 
 
+import org.model.Model;
 import org.springframework.data.neo4j.repository.* ;
 
 public interface ModelRepository extends GraphRepository <Model>{

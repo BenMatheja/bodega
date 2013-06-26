@@ -1,4 +1,4 @@
-package model;
+package org.model;
 
 import org.springframework.data.neo4j.annotation.*;
 @NodeEntity

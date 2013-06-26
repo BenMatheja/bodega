@@ -14,6 +14,9 @@ public class GalaxyService {
 	@Autowired
 	private WorldRepository worldRepository;
 	
+	public long getNumberOfWorlds() {
+		return worldRepository.count();
+	}
 	
 	public World createWorld(String name, int moons) {
 		return worldRepository.save(new World(name, moons));
