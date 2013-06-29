@@ -20,15 +20,23 @@ private VertexRepository vertexRepository;
 
 public Model findModelByTitle(String title){
 	return modelRepository.findByPropertyValue("title", title);
-	
+}
+public Model findModelById(Long id){
+	return modelRepository.findById(id);
 }
 public Model createModel(Language lng, String title){
-	return modelRepository.save(new Model(lng,title));
+	Model nm = new Model(title);
+	nm.setLanguage(lng);
+	return modelRepository.save(nm);
+	
 }
 public Language createLanguage(String title, String description){
-	return languageRepository.save(new Language("EPK","Ereignisgesteuerte Prozesskette"));
+	Language l = new Language(title,description);
+	return languageRepository.save(l);
 }
-public Vertex createVertex(String caption){
-	return vertexRepository.save(new Vertex(caption));
+public Vertex createVertex(String caption, Model model){
+	Vertex v = new Vertex(caption);
+	v.setModel(model);
+	return vertexRepository.save(v);
 }
 }
