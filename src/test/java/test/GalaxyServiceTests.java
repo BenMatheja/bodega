@@ -40,10 +40,12 @@ public class GalaxyServiceTests {
     public void shouldAllowDirectWorldCreation() {
 		assertEquals(0, galaxyService.getNumberOfWorlds());
 		World myWorld = galaxyService.createWorld("mine", 0);
+		template.save(myWorld);
         assertEquals(1, galaxyService.getNumberOfWorlds());
         
         Iterable<World> foundWorlds = galaxyService.getAllWorlds();
         World mine = foundWorlds.iterator().next();
+        template.save(mine);
         assertEquals(myWorld.getName(), mine.getName());
     
 		

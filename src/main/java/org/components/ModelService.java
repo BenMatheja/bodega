@@ -26,7 +26,7 @@ public Model createModel(Language lng, String title){
 	return modelRepository.save(new Model(lng,title));
 }
 public Language createLanguage(String title, String description){
-	return languageRepository.save(new Language(title,description));
+	return languageRepository.save(new Language("EPK","Ereignisgesteuerte Prozesskette"));
 }
 public Vertex createVertex(String caption){
 	return vertexRepository.save(new Vertex(caption));

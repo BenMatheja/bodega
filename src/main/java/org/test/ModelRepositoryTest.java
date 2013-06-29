@@ -27,14 +27,11 @@ public class ModelRepositoryTest {
 	@Test
 	public void createFirstModel(){
 		Language epk = modelservice.createLanguage("EPK", "Ereignisgesteuerte Prozesskette");
-		Vertex n1 = template.save(new Vertex("Invoice incoming"));
-		Vertex n2 = template.save(new Vertex("Define type of invoice"));
-		Edge e1 = template.save(new Edge(n1,n2,"controlflow"));
+		Vertex n1 = modelservice.createVertex("Invoice incoming");
+		Vertex n2 = modelservice.createVertex("Define type of invoice");
+	
 		
 		Model invoiceManagement = new Model(epk,"Manage Invoices" );
-		invoiceManagement.addEdge(e1);
-		invoiceManagement.addVertex(n1);
-		invoiceManagement.addVertex(n2);
 		template.save(invoiceManagement);
 		assertEquals(modelservice.findModelByTitle("Manage Invoices"), invoiceManagement.getTitle());
 		

@@ -13,12 +13,6 @@ public class Model extends AbstractEntity {
 	@RelatedTo(type = "IS_AN")
 	private Language language;
 
-	@RelatedTo(type = "CONSISTS_OF")
-	private List<Edge> Edges = new ArrayList<Edge>();
-
-	@RelatedTo(type = "AGGREGATES")
-	private List<Vertex> Vertices = new ArrayList<Vertex>();
-
 	public Model(Language language, String title) {
 		this.language = language;
 		this.title = title;
@@ -32,21 +26,6 @@ public class Model extends AbstractEntity {
 		this.language = language;
 	}
 
-	public List<Edge> getEdges() {
-		return Edges;
-	}
-
-	public void addEdge(Edge edge) {
-		Edges.add(edge);
-	}
-
-	public List<Vertex> getVertices() {
-		return Vertices;
-	}
-
-	public void addVertex(Vertex vertex) {
-		Vertices.add( vertex);
-	}
 
 	public void setTitle(String title) {
 		this.title = title;
