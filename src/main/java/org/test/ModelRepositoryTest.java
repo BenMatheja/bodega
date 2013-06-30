@@ -1,6 +1,9 @@
 package org.test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Collection;
 
 import org.components.ModelService;
 import org.junit.Test;
@@ -24,32 +27,54 @@ public class ModelRepositoryTest {
 	private ModelService modelservice;
 	@Autowired
 	public Neo4jTemplate template;
-		
+
 	@Test
-	public void createFirstModel(){
-		Language epk = modelservice.createLanguage("epk","ereignisgesteuerte Prozesskette");
+	public void createFirstModel() {
+		Language epk = modelservice.createLanguage("epk",
+				"ereignisgesteuerte Prozesskette");
 		Model Invoice = modelservice.createModel(epk, "Manage Invoices");
 		template.save(Invoice);
-		assertEquals(modelservice.findModelById(Invoice.getId()).getTitle(),"Manage Invoices");
-		Vertex n1 = modelservice.createVertex("Invoice incoming", Invoice);
-		template.save(n1);
-		Vertex n2 = modelservice.createVertex("Define type of invoice", Invoice);
-		template.save(n2);
-		Edge e = n1.connectWith(n2,"Controlflow");
-		template.save(e);
-		template.save(n1);
+		assertEquals(modelservice.findModelById(Invoice.getId()).getTitle(),
+				"Manage Invoices");
+		assertEquals(modelservice.findModelByTitle("Manage Invoices")
+				.getTitle(), Invoice.getTitle());
+	}
 
-		
-//		Model invoiceManagement = new Model();
-//		invoiceManagement.setTitle("InvoiceManagment");
-//		invoiceManagement.setLanguage(epk);
-//		template.save(invoiceManagement);
-		assertEquals(modelservice.findModelByTitle("Manage Invoices").getTitle(), Invoice.getTitle());
-		
-		
-		
-		
-		
+	@Test
+	public void createVertices() {
+		Language epk = modelservice.createLanguage("epk",
+				"ereignisgesteuerte Prozesskette");
+		Model Invoice = modelservice.createModel(epk, "Manage Invoices");
+		template.save(Invoice);
+		Vertex n1 = modelservice.createVertex("Invoice incoming", Invoice);
+		Vertex n2 = modelservice
+				.createVertex("Define type of invoice", Invoice);
+		Edge e = n1.connectWith(n2, "Controlflow");
+		template.save(e);
+	}
+	
+	@Test
+	public void batchInsertVertices() {
+		Language epk = modelservice.createLanguage("epk",
+				"ereignisgesteuerte Prozesskette");
+		Model Invoice = modelservice.createModel(epk, "Manage Invoices");
+		for (int i = 0; i < 100; i++) {
+			int z = i + 1;
+			Vertex v = modelservice.createVertex("Invoice " + z, Invoice);
+			template.save(v);
+		}
+		System.out.println("For Controlflow passed");
+	}
+	@Test
+	public void findAllModelsTest() {
+		Collection<Model> madeModels = modelservice.makeSomeModels();
+		Iterable<Model> foundModels = modelservice.getAllModels();
+		int countOfFoundModels = 0;
+		for(Model foundModel : foundModels){
+			assertTrue(madeModels.contains(foundModel));
+			countOfFoundModels++;
+		}
+		assertEquals(madeModels.size(), countOfFoundModels);
 	}
 
 }
