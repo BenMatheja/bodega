@@ -1,9 +1,17 @@
 package org.playground;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class PlayGround {
 	public static void main(String[] args){
-		int rand =(int) Math.random() * (9-0) + 0;
-		System.out.println(String.valueOf((int)Math.round(Math.random()*9)));
+		Random randomGenerator = new Random();
+		int fin = randomGenerator.nextInt(50);
+		ArrayList<String> al = new ArrayList<String>();
+		for(int i=0; i<50; i++){
+			al.add("Test"+String.valueOf(i));
+		}
+		System.out.println(al.get(fin));
 	}
 
 }

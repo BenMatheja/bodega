@@ -1,5 +1,6 @@
 package org.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.neo4j.graphdb.Direction;
@@ -17,7 +18,7 @@ public class Vertex extends AbstractEntity {
 	@Indexed(unique = true)
 	Model model;
 	@RelatedToVia(type="CONNECTED", direction = Direction.OUTGOING, elementClass = Edge.class)
-	Collection<Edge> OutgoingEdges;
+	ArrayList<Edge> OutgoingEdges = new ArrayList<Edge>();
 	
 	private String caption;
 	
