@@ -7,7 +7,7 @@
       <Entity type="Class">
         <Name>AbstractEntity</Name>
         <Access>Public</Access>
-        <Location left="791" top="649" />
+        <Location left="1089" top="877" />
         <Size width="162" height="155" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private Long id</Member>
@@ -19,7 +19,7 @@
       <Entity type="Class">
         <Name>Edge</Name>
         <Access>Public</Access>
-        <Location left="1059" top="48" />
+        <Location left="1313" top="232" />
         <Size width="162" height="196" />
         <Collapsed>False</Collapsed>
         <Member type="Field">Vertex start</Member>
@@ -34,7 +34,7 @@
       <Entity type="Class">
         <Name>Language</Name>
         <Access>Public</Access>
-        <Location left="495" top="265" />
+        <Location left="793" top="462" />
         <Size width="162" height="230" />
         <Collapsed>False</Collapsed>
         <Member type="Field">String title</Member>
@@ -51,30 +51,31 @@
       <Entity type="Class">
         <Name>Model</Name>
         <Access>Public</Access>
-        <Location left="726" top="48" />
-        <Size width="162" height="216" />
+        <Location left="1064" top="232" />
+        <Size width="162" height="247" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">String title</Member>
+        <Member type="Field">private String title</Member>
         <Member type="Field">private Language language</Member>
+        <Member type="Field">private Set&lt;Edge&gt; edges</Member>
         <Member type="Method">public Language getLanguage()</Member>
         <Member type="Method">public void setLanguage(Language language)</Member>
         <Member type="Method">public String getTitle()</Member>
         <Member type="Method">public void setTitle(String title)</Member>
+        <Member type="Method">public void addEdge(Edge e)</Member>
+        <Member type="Method">public void setEdges(Set&lt;Edge&gt; allEdges)</Member>
+        <Member type="Method">public Set&lt;Edge&gt; getAllEdges()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Vertex</Name>
         <Access>Public</Access>
-        <Location left="1387" top="48" />
-        <Size width="162" height="230" />
+        <Location left="1546" top="263" />
+        <Size width="162" height="179" />
         <Collapsed>False</Collapsed>
         <Member type="Field">Model model</Member>
         <Member type="Field">ArrayList&lt;Vertex&gt; vertex</Member>
         <Member type="Field">private String caption</Member>
         <Member type="Field">ArrayList&lt;Edge&gt; OutgoingEdges</Member>
-        <Member type="Method">public void setModel(Model model)</Member>
-        <Member type="Method">public Model getModel()</Member>
-        <Member type="Method">public Edge connectWith(Vertex v1, String caption)</Member>
         <Member type="Method">public String getCaption()</Member>
         <Member type="Method">public void setCaption(String caption)</Member>
         <Modifier>None</Modifier>
@@ -82,7 +83,7 @@
       <Entity type="Class">
         <Name>Project</Name>
         <Access>Public</Access>
-        <Location left="279" top="265" />
+        <Location left="793" top="249" />
         <Size width="162" height="162" />
         <Collapsed>False</Collapsed>
         <Member type="Field">String id</Member>
@@ -95,7 +96,7 @@
       <Entity type="Class">
         <Name>User</Name>
         <Access>Public</Access>
-        <Location left="279" top="25" />
+        <Location left="541" top="249" />
         <Size width="162" height="201" />
         <Collapsed>False</Collapsed>
         <Member type="Field">long UserId</Member>
@@ -113,45 +114,51 @@
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>1122</X>
-          <Y>391</Y>
+          <X>1139</X>
+          <Y>528</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>874</X>
-          <Y>531</Y>
+          <X>1173</X>
+          <Y>760</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Generalization" first="2" second="0">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>556</X>
-          <Y>520</Y>
+          <X>854</X>
+          <Y>717</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>875</X>
-          <Y>542</Y>
+          <X>1171</X>
+          <Y>801</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Generalization" first="3" second="0">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>799</X>
-          <Y>532</Y>
+          <X>1139</X>
+          <Y>715</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>875</X>
-          <Y>531</Y>
+          <X>1173</X>
+          <Y>759</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>875</X>
-          <Y>544</Y>
+          <X>1173</X>
+          <Y>772</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Association" first="3" second="2">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1039</X>
+          <Y>393</Y>
+        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
         <StartMultiplicity>1</StartMultiplicity>
@@ -161,28 +168,30 @@
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>1465</X>
-          <Y>530</Y>
+          <X>1624</X>
+          <Y>694</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>874</X>
-          <Y>530</Y>
+          <X>1172</X>
+          <Y>759</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>874</X>
-          <Y>531</Y>
+          <X>1172</X>
+          <Y>759</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Association" first="1" second="3">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>919</X>
-          <Y>221</Y>
+          <X>1273</X>
+          <Y>405</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>913</X>
-          <Y>221</Y>
+          <X>1251</X>
+          <Y>405</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
@@ -190,15 +199,17 @@
         <EndMultiplicity>0..*</EndMultiplicity>
       </Relationship>
       <Relationship type="Association" first="3" second="5">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>496</X>
-          <Y>133</Y>
+          <X>1039</X>
+          <Y>321</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>466</X>
-          <Y>337</Y>
+          <X>980</X>
+          <Y>321</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
@@ -208,12 +219,18 @@
       <Relationship type="Generalization" first="5" second="0">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>779</X>
+          <Y>444</Y>
+        </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>874</X>
-          <Y>611</Y>
+          <X>1172</X>
+          <Y>759</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Association" first="4" second="1">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
@@ -222,15 +239,17 @@
         <EndMultiplicity>2</EndMultiplicity>
       </Relationship>
       <Relationship type="Association" first="6" second="5">
-        <StartOrientation>Vertical</StartOrientation>
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>254</X>
-          <Y>246</Y>
+          <X>774</X>
+          <Y>326</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>240</X>
-          <Y>352</Y>
+          <X>723</X>
+          <Y>326</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
@@ -241,12 +260,12 @@
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>211</X>
-          <Y>151</Y>
+          <X>473</X>
+          <Y>375</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>874</X>
-          <Y>532</Y>
+          <X>1172</X>
+          <Y>760</Y>
         </BendPoint>
       </Relationship>
     </Relationships>

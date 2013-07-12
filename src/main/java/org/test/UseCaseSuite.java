@@ -28,26 +28,26 @@ public class UseCaseSuite {
 	public void setUp(){	
 	}
 	
-//	@Test
+	@Test
 	public void insert100(){
 		this.insertQuants(100);
 	}
 	
 //	@Test
-	public void insert500(){
-		this.insertQuants(500);
-	}
-	
+//	public void insert500(){
+//		this.insertQuants(500);
+//	}
+//	
 //	@Test
-	public void insert1000(){
-		this.insertQuants(1000);
-	}
+//	public void insert1000(){
+//		this.insertQuants(1000);
+//	}
 	@Test
 	public void testModelCreation(){
 		Collection<Model> models = modelservice.makeSomeModels();
-		for(Model model : models){
-			this.populateModel(model);
-		}
+//		for(Model model : models){
+//			this.populateModel(model);
+//		}
 	}
 	
 	private void insertQuants(int size){
@@ -89,39 +89,39 @@ public class UseCaseSuite {
 		System.out.println("Storage of "+ String.valueOf(size) +" Model objects took "+ String.valueOf(seconds2) + " seconds");
 	}
 	
-	private void populateModel(Model model){
-		Random randomGenerator = new Random();
-		/**
-		 * Generate sample Vertices
-		 */
-		ArrayList<Vertex> Vertices = new ArrayList<Vertex>();
-		for(int i=0;i<50;i++){
-			Vertices.add(modelservice.createVertex("Kante "+i, model));
-		}
-		/**
-		 * Connect those samples
-		 */
-		for(int j=0;j<25;j++){
-			int fin;
-			int lin;
-			do{ 
-				fin = randomGenerator.nextInt(50); 
-				lin = randomGenerator.nextInt(50);
-			}
-			while(fin==lin); //prevent getting similar numbers
-	
-			Vertex start = Vertices.get(fin);
-			Vertex end = Vertices.get(lin);
-			
-			start.connectWith(end,"controlflow "+j);
-			template.save(start);
-		}
-		
-		
-		
-		
-		
-		
-	}
+//	private void populateModel(Model model){
+//		Random randomGenerator = new Random();
+//		/**
+//		 * Generate sample Vertices
+//		 */
+//		ArrayList<Vertex> Vertices = new ArrayList<Vertex>();
+//		for(int i=0;i<50;i++){
+//			Vertices.add(modelservice.createVertex("Kante "+i, model));
+//		}
+//		/**
+//		 * Connect those samples
+//		 */
+//		for(int j=0;j<25;j++){
+//			int fin;
+//			int lin;
+//			do{ 
+//				fin = randomGenerator.nextInt(50); 
+//				lin = randomGenerator.nextInt(50);
+//			}
+//			while(fin==lin); //prevent getting similar numbers
+//	
+//			Vertex start = Vertices.get(fin);
+//			Vertex end = Vertices.get(lin);
+//			
+//			start.connectWith(end,"controlflow "+j);
+//			template.save(start);
+//		}
+//		
+//		
+//		
+//		
+//		
+//		
+//	}
 
 }

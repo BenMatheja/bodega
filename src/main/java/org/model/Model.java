@@ -1,30 +1,32 @@
 package org.model;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
+import org.model.Edge;
 import org.springframework.data.neo4j.annotation.Indexed;
 import org.springframework.data.neo4j.annotation.NodeEntity;
 import org.springframework.data.neo4j.annotation.RelatedTo;
+import org.springframework.data.neo4j.annotation.RelatedToVia;
 import org.springframework.data.neo4j.support.index.IndexType;
+
 @NodeEntity
 public class Model extends AbstractEntity {
-	@Indexed(indexType = IndexType.FULLTEXT, indexName ="searchByTitle") //Search a Model via title
+	@Indexed(indexType = IndexType.FULLTEXT, indexName = "searchByTitle")// Search a Model via title
 	String title;
 
-	@RelatedTo(type = "IS_AN") //define the rel to Language, (Rechnungsprüfung IS_AN EPK)
-	private Language language;
+	@RelatedTo(type = "IS_AN")
+	private Language language;	// define the rel to Language, (Rechnungsprüfung IS_AN EPK)
 	
-	@RelatedTo(type ="HAS_MANY", elementClass = Edge.class) //define the rel to the edges, (Rechnungsprüfung HAS_MANY Edges)
-	Set<Edge> edges;
-	
-	public Model(String title){
-		this.title = title;
+	@RelatedToVia
+	private Set<Edge> edges = new HashSet<Edge>(); // define the rel to the
+													// edges, (Rechnungsprüfung
+													// has many Edges
+	public Model(String title) {	this.title = title;		}
 
-	}
-	private Model(){ /*no-arg constructor for SDN bean generation */}
-	
+	private Model() { /* no-arg constructor for SDN bean generation */	}
+
 	public Language getLanguage() {
 		return language;
 	}
@@ -41,15 +43,15 @@ public class Model extends AbstractEntity {
 		return this.title;
 	}
 
-	public void addEdge(Edge e){
+	public void addEdge(Edge e) {
 		edges.add(e);
 	}
-	
-	public void setEdges(Set<Edge> allEdges){
+
+	public void setEdges(Set<Edge> allEdges) {
 		this.edges = allEdges;
 	}
-	
-	public Set<Edge> getAllEdges(){
+
+	public Set<Edge> getAllEdges() {
 		return this.edges;
 	}
 }

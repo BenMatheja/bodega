@@ -1,53 +1,33 @@
 package org.model;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
-import org.neo4j.graphdb.Direction;
 import org.springframework.data.neo4j.annotation.*;
+
 /**
- * Vertex object
+ * Vertex object represents vertex in a bpm model caption references
+ * 
  * @author ben
- * represents vertex in a bpm model
- * caption
- * references to OutgoingEdges
  */
 @NodeEntity
 public class Vertex extends AbstractEntity {
-	@RelatedTo(type="IS_PART_OF")
-	@Indexed
-	Model model;
-	@RelatedTo(type="CONNECTED")
-	ArrayList<Vertex> vertex;
-	@RelatedToVia(type="CONNECTED", direction = Direction.OUTGOING, elementClass = Edge.class)
-	ArrayList<Edge> OutgoingEdges = new ArrayList<Edge>();
-	
 	private String caption;
-	
-	private Vertex(){}
-	public Vertex(String caption){
+
+	@SuppressWarnings("unused")
+	private Vertex() {/* no-arg constructor for sdn bean creation */
+	}
+
+	public Vertex(String caption) {
 		this.setCaption(caption);
 	}
-	
-	public void setModel(Model model){
-		this.model = model;
-	}
-	public Model getModel(){
-		return this.model;
-	}
-	
-	public Edge connectWith(Vertex v1, String caption){
-		Edge e = new Edge(this, v1, caption);
-		OutgoingEdges.add(e);
-		return e;
-	}
+
 	public String getCaption() {
 		return caption;
 	}
+
 	public void setCaption(String caption) {
 		this.caption = caption;
 	}
-	
-	
 
 }

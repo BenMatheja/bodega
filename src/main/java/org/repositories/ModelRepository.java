@@ -1,13 +1,9 @@
 package org.repositories;
 
-
 import org.model.Model;
-import org.springframework.data.neo4j.repository.* ;
-import org.model.Vertex;
-import org.model.Language;
-import org.model.Edge;
+import org.springframework.data.neo4j.repository.*;
 
-public interface ModelRepository extends GraphRepository <Model>{
+public interface ModelRepository extends GraphRepository<Model> {
 
-Model findById(Long id);
+	Model findById(Long id);
 }
