@@ -1,0 +1,254 @@
+<Project>
+  <Name>Bodega</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Unbenannt</Name>
+    <Language>Java</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>AbstractEntity</Name>
+        <Access>Public</Access>
+        <Location left="791" top="649" />
+        <Size width="162" height="155" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Long id</Member>
+        <Member type="Method">public Long getId()</Member>
+        <Member type="Method">public boolean equals(Object obj)</Member>
+        <Member type="Method">public int hashCode()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Edge</Name>
+        <Access>Public</Access>
+        <Location left="1059" top="48" />
+        <Size width="162" height="196" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">Vertex start</Member>
+        <Member type="Field">Vertex end</Member>
+        <Member type="Field">String caption</Member>
+        <Member type="Constructor">public Edge(Vertex Start, Vertex end, String caption)</Member>
+        <Member type="Constructor">public Edge()</Member>
+        <Member type="Method">public Vertex getStart()</Member>
+        <Member type="Method">public Vertex getEnd()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Language</Name>
+        <Access>Public</Access>
+        <Location left="495" top="265" />
+        <Size width="162" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">String title</Member>
+        <Member type="Field">private String description</Member>
+        <Member type="Field">Set&lt;Model&gt; models</Member>
+        <Member type="Constructor">public Language(String title, String description)</Member>
+        <Member type="Method">public void setTitle(String title)</Member>
+        <Member type="Method">public String getTitle()</Member>
+        <Member type="Method">public void setDescription(String desc)</Member>
+        <Member type="Method">public String getDescription()</Member>
+        <Member type="Method">public void addModel(Model model)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Model</Name>
+        <Access>Public</Access>
+        <Location left="726" top="48" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">String title</Member>
+        <Member type="Field">private Language language</Member>
+        <Member type="Method">public Language getLanguage()</Member>
+        <Member type="Method">public void setLanguage(Language language)</Member>
+        <Member type="Method">public String getTitle()</Member>
+        <Member type="Method">public void setTitle(String title)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Vertex</Name>
+        <Access>Public</Access>
+        <Location left="1387" top="48" />
+        <Size width="162" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">Model model</Member>
+        <Member type="Field">ArrayList&lt;Vertex&gt; vertex</Member>
+        <Member type="Field">private String caption</Member>
+        <Member type="Field">ArrayList&lt;Edge&gt; OutgoingEdges</Member>
+        <Member type="Method">public void setModel(Model model)</Member>
+        <Member type="Method">public Model getModel()</Member>
+        <Member type="Method">public Edge connectWith(Vertex v1, String caption)</Member>
+        <Member type="Method">public String getCaption()</Member>
+        <Member type="Method">public void setCaption(String caption)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Project</Name>
+        <Access>Public</Access>
+        <Location left="279" top="265" />
+        <Size width="162" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">String id</Member>
+        <Member type="Field">String title</Member>
+        <Member type="Field">private List&lt;Model&gt; Models</Member>
+        <Member type="Field">private User owner</Member>
+        <Member type="Constructor">public Project(String title, String id, User owner)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>User</Name>
+        <Access>Public</Access>
+        <Location left="279" top="25" />
+        <Size width="162" height="201" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">long UserId</Member>
+        <Member type="Field">String firstname</Member>
+        <Member type="Field">String lastname</Member>
+        <Member type="Field">Set&lt;Project&gt; projects</Member>
+        <Member type="Method">public long getUserId()</Member>
+        <Member type="Method">public void setUserId(long userId)</Member>
+        <Member type="Constructor">public User(String firstname, String lastname)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Generalization" first="1" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1122</X>
+          <Y>391</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>874</X>
+          <Y>531</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="2" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>556</X>
+          <Y>520</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>875</X>
+          <Y>542</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="3" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>799</X>
+          <Y>532</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>875</X>
+          <Y>531</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>875</X>
+          <Y>544</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="3" second="2">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Generalization" first="4" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1465</X>
+          <Y>530</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>874</X>
+          <Y>530</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>874</X>
+          <Y>531</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="1" second="3">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>919</X>
+          <Y>221</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>913</X>
+          <Y>221</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="3" second="5">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>496</X>
+          <Y>133</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>466</X>
+          <Y>337</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Generalization" first="5" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>874</X>
+          <Y>611</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="4" second="1">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>0..*</StartMultiplicity>
+        <EndMultiplicity>2</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="6" second="5">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>254</X>
+          <Y>246</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>240</X>
+          <Y>352</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1..*</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Generalization" first="6" second="0">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>211</X>
+          <Y>151</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>874</X>
+          <Y>532</Y>
+        </BendPoint>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>

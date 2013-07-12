@@ -15,8 +15,10 @@ import org.springframework.data.neo4j.annotation.*;
 @NodeEntity
 public class Vertex extends AbstractEntity {
 	@RelatedTo(type="IS_PART_OF")
-	@Indexed(unique = true)
+	@Indexed
 	Model model;
+	@RelatedTo(type="CONNECTED")
+	ArrayList<Vertex> vertex;
 	@RelatedToVia(type="CONNECTED", direction = Direction.OUTGOING, elementClass = Edge.class)
 	ArrayList<Edge> OutgoingEdges = new ArrayList<Edge>();
 	

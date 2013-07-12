@@ -15,7 +15,8 @@ public class Language extends AbstractEntity {
 String title;
 
 private String description;
-@RelatedTo(type = "SPEAKS")
+
+@RelatedTo(elementClass = Model.class, type = "SPEAKS")
 Set<Model> models = new HashSet<Model>();
 
 public Language(String title, String description){

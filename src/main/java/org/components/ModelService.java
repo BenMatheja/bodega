@@ -49,6 +49,7 @@ public Vertex createVertex(String caption, Model model){
 	vertexRepository.save(v);
 	return v;
 }
+
 public Collection<Model> makeSomeModels(){
 	Collection<Model> models = new ArrayList<Model>();
 	//Create Languages first
@@ -64,7 +65,6 @@ public Collection<Model> makeSomeModels(){
 	models.add(createModel(petri,"Wareneingang2"));
 	models.add(createModel(epk,"Bestelleingang2"));
 	return models;
-	
 }
 
 }
