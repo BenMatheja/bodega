@@ -2,11 +2,9 @@ package org.model;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.MappedSuperclass;
-
 import org.springframework.data.neo4j.annotation.GraphId;
-
 /**
- * provides shared behavior and attributes to derive entity classes from
+ * provides shared behaviour and attributes to derive entity classes from
  * @author ben
  * @since 29.06.2013
  */
@@ -15,7 +13,6 @@ public class AbstractEntity  {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@GraphId 
 	Long id;
-	
 	/**
 	 * Returns the identifier of the entity.
 	 * 
@@ -43,7 +40,6 @@ public class AbstractEntity  {
 
 		return this.id.equals(that.getId());
 	}
-
 	/* 
 	 * (non-Javadoc)
 	 * @see java.lang.Object#hashCode()

@@ -1,4 +1,5 @@
 package org.model;
+
 import org.springframework.data.neo4j.annotation.EndNode;
 import org.springframework.data.neo4j.annotation.RelationshipEntity;
 import org.springframework.data.neo4j.annotation.StartNode;
@@ -6,24 +7,31 @@ import org.springframework.data.neo4j.annotation.StartNode;
 @RelationshipEntity(type = "CONNECTED")
 public class Edge extends AbstractEntity {
 
-@StartNode Vertex v1;
-@EndNode Vertex v2;
-String caption;
+	@StartNode
+	Vertex start;
+	@EndNode
+	Vertex end;
+	String caption;
 
-public Edge(Vertex Start, Vertex end, String caption){
-	this.v1 = Start;
-	this.v2 = end;
-	this.caption = caption;
-}
-public Edge(){
-}
+	public Edge(Vertex Start, Vertex end, String caption) {
+		this.start = Start;
+		this.end = end;
+		this.caption = caption;
+	}
 
-public Vertex getStart(){
-	return this.v1;
-}
-public Vertex getEnd(){
-	return this.v2;
-}
+	public Edge() {
+	}
 
+	public Vertex getStart() {
+		return this.start;
+	}
+
+	public Vertex getEnd() {
+		return this.end;
+	}
+
+	public String getCaption() {
+		return this.caption;
+	}
 
 }

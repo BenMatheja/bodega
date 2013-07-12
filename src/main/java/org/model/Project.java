@@ -14,7 +14,7 @@ public class Project extends AbstractEntity {
 	@RelatedTo(type = "IS_PART_OF")
 	private List<Model> Models = new ArrayList<Model>();
 
-	@RelatedTo(type = "IS_OWNER")
+	@RelatedTo(type = "IS_INVOLVED")
 	private User owner;
 
 	public Project(String title, String id, User owner) {
