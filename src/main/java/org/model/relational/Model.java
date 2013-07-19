@@ -16,10 +16,10 @@ import org.model.relational.Language;
 public class Model extends AbstractEntity {
 	@Column(unique = true)
 	String title;
-	
+
 	@ManyToOne
 	Language language;
-	
+
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Edge> edges = new HashSet<Edge>();
 
@@ -42,7 +42,7 @@ public class Model extends AbstractEntity {
 	public Set<Edge> getAllEdges() {
 		return edges;
 	}
-	
+
 	public void addEdge(Edge e) {
 		edges.add(e);
 	}

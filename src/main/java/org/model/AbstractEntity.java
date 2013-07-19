@@ -5,7 +5,7 @@ import javax.persistence.MappedSuperclass;
 import org.springframework.data.neo4j.annotation.GraphId;
 /**
  * provides shared behaviour and attributes to derive entity classes from
- * @author ben
+ * @author Oliver Gierke
  * @since 29.06.2013
  */
 @MappedSuperclass

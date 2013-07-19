@@ -1,8 +1,5 @@
 package org.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.springframework.data.neo4j.annotation.*;
 
 /**
