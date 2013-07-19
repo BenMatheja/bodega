@@ -12,6 +12,7 @@ import org.relational.model.Language;
 import org.relational.model.Model;
 import org.relational.repositories.LanguageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.orm.jpa.JpaTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -24,10 +25,11 @@ public class UseCaseSuite {
 	@Autowired
 	ModelService modelservice;
 	@Autowired
-	LanguageRepository languageRepository;
+	LanguageRepository languageRepository;	
 
 	@Before
 	public void setUp() {
+		
 	}
 
 	@Test

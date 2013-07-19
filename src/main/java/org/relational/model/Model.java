@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -21,6 +22,7 @@ public class Model extends AbstractEntity {
 	Language language;
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@ElementCollection
 	private Set<Edge> edges = new HashSet<Edge>();
 
 	public Model(String title) {

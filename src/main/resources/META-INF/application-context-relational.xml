@@ -37,6 +37,5 @@
 	</bean>
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager" />
 	<tx:annotation-driven />
-
 	<jdbc:embedded-database id="dataSource" type="HSQL" />
 </beans>
