@@ -19,7 +19,7 @@ public class Edge extends AbstractEntity {
 
 	}
 
-	public Edge(String caption, Vertex start, Vertex end) {
+	public Edge(Vertex start, Vertex end, String caption) {
 		this.start = start;
 		this.caption = caption;
 		this.end = end;

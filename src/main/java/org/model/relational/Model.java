@@ -23,6 +23,10 @@ public class Model extends AbstractEntity {
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Edge> edges = new HashSet<Edge>();
 
+	public Model(String title) {
+		this.title = title;
+	}
+
 	public String getTitle() {
 		return title;
 	}
