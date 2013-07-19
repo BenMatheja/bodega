@@ -18,31 +18,32 @@ package org.test.relational;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
-import org.components.jpa.ApplicationConfig;
+import org.junit.After;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.repositories.relational.ModelRepository;
+
 /**
- * Test case bootstrapping both JavaConfig and XML configuration to validate configuration.
+ * Test case bootstrapping both JavaConfig and XML configuration to validate
+ * configuration.
  * 
- * @author Oliver Gierke
+ * derived from Oliver Gierke
  */
 public class ApplicationConfigTest {
+	private ConfigurableApplicationContext context;
 
-	@Test
-	public void bootstrapAppFromJavaConfig() {
-
-		ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
-		assertThat(context, is(notNullValue()));
-		assertThat(context.getBean(ModelRepository.class), is(notNullValue()));
+	@After
+	public void tearDown() throws Exception {
+		if (context != null)
+			context.close();
 	}
 
 	@Test
 	public void bootstrapAppFromXml() {
-
-		ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/application-context-relational.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext(
+				"META-INF/application-context-relational.xml");
 		assertThat(context, is(notNullValue()));
 		assertThat(context.getBean(ModelRepository.class), is(notNullValue()));
 	}
