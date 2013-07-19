@@ -9,7 +9,7 @@
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-	<jpa:repositories base-package="com.oreilly.springdata.jpa" />
+	<jpa:repositories base-package="org.components.jpa" />
 
 	<bean class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
@@ -17,7 +17,13 @@
 
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="packagesToScan" value="com.oreilly.springdata.jpa" />
+		<property name="packagesToScan">
+			<list>
+			<value>org.components.jpa</value>
+			<value>org.model.relational</value>
+			<value>org.repositories.relational</value>
+			</list>
+		</property>
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<property name="database" value="HSQL" />
