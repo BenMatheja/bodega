@@ -9,7 +9,7 @@ Therefore i'll develop typical bpm-tool use-cases and measure their performance 
 
 The current setup consists of
 
-* SpringFramework 3.2.1 RELEASE  
+* Springframework 3.2.1 RELEASE  
 * SpringData 2.2.0 RELEASE
 * Neo4J Server 2.0.0 M2 static-web running embedded
 * HSQLDB 2.2.9 with Hibernate 4.19 in-memory
