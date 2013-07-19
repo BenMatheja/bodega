@@ -13,7 +13,11 @@ import org.repositories.relational.ModelRepository;
 import org.repositories.relational.VertexRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+/**
+ * ModelService for RELATIONAL
+ * @author Ben Matheja
+ *
+ */
 @Service
 public class ModelService {
 	@Autowired

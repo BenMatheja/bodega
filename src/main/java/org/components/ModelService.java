@@ -13,7 +13,11 @@ import org.repositories.ModelRepository;
 import org.repositories.VertexRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+/**
+ * ModelService for NOSQL
+ * @author Ben Matheja
+ * @since 	
+ */
 @Service
 public class ModelService {
 	@Autowired
