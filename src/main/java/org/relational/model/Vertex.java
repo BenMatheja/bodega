@@ -1,4 +1,4 @@
-package org.model.relational;
+package org.relational.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

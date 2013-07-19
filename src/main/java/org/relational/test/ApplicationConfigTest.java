@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.test.relational;
+package org.relational.test;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
@@ -23,7 +23,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.repositories.relational.ModelRepository;
+import org.relational.repositories.ModelRepository;
 
 /**
  * Test case bootstrapping both JavaConfig and XML configuration to validate

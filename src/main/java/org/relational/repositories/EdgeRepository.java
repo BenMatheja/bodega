@@ -1,7 +1,7 @@
-package org.repositories.relational;
+package org.relational.repositories;
 
 
-import org.model.relational.Edge;
+import org.relational.model.Edge;
 import org.springframework.data.repository.Repository;
 
 public interface EdgeRepository extends Repository<Edge, Long> {

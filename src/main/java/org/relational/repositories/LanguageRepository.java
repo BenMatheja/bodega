@@ -1,6 +1,6 @@
-package org.repositories.relational;
+package org.relational.repositories;
 
-import org.model.relational.Language;
+import org.relational.model.Language;
 import org.springframework.data.repository.Repository;
 
 public interface LanguageRepository extends Repository<Language, Long> {

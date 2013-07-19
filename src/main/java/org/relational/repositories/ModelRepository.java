@@ -1,6 +1,6 @@
-package org.repositories.relational;
+package org.relational.repositories;
 
-import org.model.relational.Model;
+import org.relational.model.Model;
 import org.springframework.data.repository.Repository;
 
 public interface ModelRepository extends Repository<Model, Long> {

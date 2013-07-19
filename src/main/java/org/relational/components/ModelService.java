@@ -1,16 +1,16 @@
-package org.components.jpa;
+package org.relational.components;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.model.relational.Edge;
-import org.model.relational.Language;
-import org.model.relational.Model;
-import org.model.relational.Vertex;
-import org.repositories.relational.EdgeRepository;
-import org.repositories.relational.LanguageRepository;
-import org.repositories.relational.ModelRepository;
-import org.repositories.relational.VertexRepository;
+import org.relational.model.Edge;
+import org.relational.model.Language;
+import org.relational.model.Model;
+import org.relational.model.Vertex;
+import org.relational.repositories.EdgeRepository;
+import org.relational.repositories.LanguageRepository;
+import org.relational.repositories.ModelRepository;
+import org.relational.repositories.VertexRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 /**

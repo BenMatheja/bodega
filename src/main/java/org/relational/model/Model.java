@@ -1,4 +1,4 @@
-package org.model.relational;
+package org.relational.model;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -9,8 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import org.model.relational.Edge;
-import org.model.relational.Language;
+import org.relational.model.Edge;
+import org.relational.model.Language;
 
 @Entity
 public class Model extends AbstractEntity {

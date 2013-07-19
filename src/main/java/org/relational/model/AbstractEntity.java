@@ -1,4 +1,4 @@
-package org.model.relational;
+package org.relational.model;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,7 +7,6 @@ import javax.persistence.MappedSuperclass;
 
 /**
  * Base class to derive entity classes from.
- * 
  * @author Oliver Gierke
  */
 @MappedSuperclass

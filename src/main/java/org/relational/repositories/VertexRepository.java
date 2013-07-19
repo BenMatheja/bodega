@@ -1,6 +1,6 @@
-package org.repositories.relational;
+package org.relational.repositories;
 
-import org.model.relational.Vertex;
+import org.relational.model.Vertex;
 import org.springframework.data.repository.Repository;
 
 public interface VertexRepository extends Repository<Vertex, Long> {

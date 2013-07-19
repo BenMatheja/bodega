@@ -1,10 +1,10 @@
-package org.model.relational;
+package org.relational.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-import org.model.relational.Vertex;
+import org.relational.model.Vertex;
 
 @Entity
 public class Edge extends AbstractEntity {

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.test.relational;
+package org.relational.test;
 
 import java.sql.Connection;
 import java.sql.SQLException;
