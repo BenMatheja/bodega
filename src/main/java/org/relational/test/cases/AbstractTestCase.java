@@ -1,7 +1,9 @@
 package org.relational.test.cases;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 import org.relational.components.ModelService;
 import org.relational.model.Edge;
@@ -10,6 +12,8 @@ import org.relational.model.Model;
 import org.relational.model.Vertex;
 import org.relational.repositories.LanguageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import ch.qos.logback.core.pattern.parser.Node;
 
 public class AbstractTestCase {
 	@Autowired

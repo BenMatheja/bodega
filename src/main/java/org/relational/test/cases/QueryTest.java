@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Collection;
+import java.util.Set;
 
 import javax.sound.midi.VoiceStatus;
 import javax.sql.DataSource;
@@ -18,6 +19,7 @@ import org.junit.Test;
 import org.junit.internal.matchers.Each;
 import org.junit.runner.RunWith;
 import org.relational.components.ModelService;
+import org.relational.model.Edge;
 import org.relational.model.Model;
 import org.relational.repositories.ModelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,5 +59,14 @@ public class QueryTest extends AbstractTestCase {
 		assertNotNull(countOfFoundModels);
 		assertEquals(2, countOfFoundModels);
 	}
-	
+	@Test
+	public void loadEdgesForSpecificModel() {
+		Model model = modelservice.findModelByTitle("Testmodel 1-0");
+		Set<Edge> edges = model.getAllEdges();
+		for (Edge edge : edges) {
+			System.out.println(edge.toString());
+		}
+		assertNotNull(edges);
+		
+	}
 }

@@ -48,4 +48,8 @@ public class Edge extends AbstractEntity {
 	public void setCaption(String caption) {
 		this.caption = caption;
 	}
+	public String toString() {
+		return this.start.getCaption()+" -> "+this.end.getCaption();	
+		
+	}
 }
