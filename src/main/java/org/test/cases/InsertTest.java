@@ -1,50 +1,41 @@
-package org.relational.test;
+package org.test.cases;
 
-//Domain objects
-import org.relational.model.Language;
-import org.relational.model.Model;
-import org.relational.model.Edge;
-import org.relational.model.Vertex;
-//Components
-import org.relational.components.ModelService;
-import org.relational.repositories.LanguageRepository;
-//Spring
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Random;
+
+import org.components.ModelService;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.model.Language;
+import org.model.Model;
+import org.model.Vertex;
+import org.model.Edge;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.orm.jpa.JpaTemplate;
+import org.springframework.data.neo4j.support.Neo4jTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-//Java utils
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Random;
-
-//junit
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
-@ContextConfiguration(locations = { "classpath:/META-INF/application-context-relational.xml" })
+@ContextConfiguration(locations = { "classpath:/META-INF/application-context.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-@TransactionConfiguration(defaultRollback = false)// persist it to file
+@TransactionConfiguration(defaultRollback = false)
 /**
- * Relational
+ * NoSQL
  * @author ben
  *
  */
-public class UseCaseSuite {
+public class InsertTest {
 	@Autowired
 	ModelService modelservice;
 	@Autowired
-	LanguageRepository languageRepository;
+	Neo4jTemplate template;
 
 	@Before
 	public void setUp() {
-
 	}
 
 	@Test
@@ -58,14 +49,14 @@ public class UseCaseSuite {
 	}
 
 //	@Test
-//	public void insert1000() {
-//		this.insertQuants(1000, 125, 175);
-//	}
+	public void insert1000() {
+		this.insertQuants(1000, 125, 175);
+	}
 	
 //	@Test
-//	public void insert1500() {
-//		this.insertQuants(1500, 200, 325 );
-//	}
+	public void insert1500() {
+		this.insertQuants(1500, 200, 325 );
+	}
 	
 
 	private void insertQuants(int size, int vertexCount, int edgeCount) {
@@ -96,7 +87,7 @@ public class UseCaseSuite {
 			Language l = lngs.get(fin);
 			Model m = modelservice.createModel(l, title);
 			l.addModel(m);
-			languageRepository.save(l);
+			template.save(l);
 			this.populateModel(m, vertexCount, edgeCount);
 		}
 

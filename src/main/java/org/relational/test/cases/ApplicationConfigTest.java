@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.relational.test;
+package org.relational.test.cases;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;

@@ -12,5 +12,5 @@ The current setup consists of
 * Springframework 3.2.1 RELEASE  
 * SpringData 2.2.0 RELEASE
 * Neo4J Server 2.0.0 M2 static-web running embedded
-* HSQLDB 2.2.9 with Hibernate 4.19 in-memory
+* HSQLDB 2.2.9 with Hibernate 4.19 file-based embedded
  

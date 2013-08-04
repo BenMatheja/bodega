@@ -32,9 +32,13 @@ public class ModelService {
 	public Model findModelByTitle(String title) {
 		return modelRepository.findByTitle(title);
 	}
-
-	public Model findModelById(Long id) {
+	
+	public Model findModelByEntityId(long id) {
 		return modelRepository.findById(id);
+	}
+	
+	public Model findModelByUid(int id) {
+		return modelRepository.findByUid(id);
 	}
 
 	public Iterable<Model> getAllModels() {

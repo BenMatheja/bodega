@@ -1,4 +1,4 @@
-package org.test;
+package org.test.cases;
 
 import org.junit.After;
 import org.junit.Test;
