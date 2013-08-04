@@ -9,22 +9,24 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.relational.model.Edge;
 import org.relational.model.Language;
 
 @Entity
+@Table(name="MODEL")
 public class Model extends AbstractEntity {
-	@Column(unique = true)
+	@Column(name="TITLE")
 	String title;
-
+	
 	@ManyToOne
 	Language language;
-
+	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@ElementCollection
 	private Set<Edge> edges = new HashSet<Edge>();
-
+	
 	public Model(String title) {
 		this.title = title;
 	}

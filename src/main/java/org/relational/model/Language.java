@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
@@ -11,12 +12,13 @@ import org.relational.model.Model;
 
 @Entity
 public class Language extends AbstractEntity {
-	@Column(nullable = false)
+	@Column(name="TITLE",nullable = false)
 	String title;
 	
-	@Column(nullable = false)
-	private String description;
+	@Column(name="DESC",nullable = false)
+	String description;
 	
+	@ElementCollection
 	@OneToMany
 	Set<Model> models = new HashSet<Model>();
 

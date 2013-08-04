@@ -1,61 +1,74 @@
 package org.relational.test;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Random;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.relational.components.ModelService;
+//Domain objects
 import org.relational.model.Language;
 import org.relational.model.Model;
+import org.relational.model.Edge;
+import org.relational.model.Vertex;
+//Components
+import org.relational.components.ModelService;
 import org.relational.repositories.LanguageRepository;
+//Spring
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.orm.jpa.JpaTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
+
+//Java utils
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Random;
+
+//junit
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
 @ContextConfiguration(locations = { "classpath:/META-INF/application-context-relational.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
+@TransactionConfiguration(defaultRollback = false)// persist it to file
+/**
+ * Relational
+ * @author ben
+ *
+ */
 public class UseCaseSuite {
 	@Autowired
 	ModelService modelservice;
 	@Autowired
-	LanguageRepository languageRepository;	
+	LanguageRepository languageRepository;
 
 	@Before
 	public void setUp() {
-		
+
 	}
 
 	@Test
 	public void insert100() {
-		this.insertQuants(100);
+		this.insertQuants(100, 50, 75); //models, vertices, edges
 	}
 
 	@Test
 	public void insert500() {
-		this.insertQuants(500);
+		this.insertQuants(500, 100, 125);
 	}
 
-	@Test
-	public void insert1000() {
-		this.insertQuants(1000);
-	}
+//	@Test
+//	public void insert1000() {
+//		this.insertQuants(1000, 125, 175);
+//	}
+	
+//	@Test
+//	public void insert1500() {
+//		this.insertQuants(1500, 200, 325 );
+//	}
+	
 
-	// @Test
-	public void testModelCreation() {
-		Collection<Model> models = modelservice.makeSomeModels();
-		// for(Model model : models){
-		// this.populateModel(model);
-		// }
-	}
-
-	private void insertQuants(int size) {
+	private void insertQuants(int size, int vertexCount, int edgeCount) {
 
 		/**
 		 * create 10 different languages
@@ -84,6 +97,7 @@ public class UseCaseSuite {
 			Model m = modelservice.createModel(l, title);
 			l.addModel(m);
 			languageRepository.save(l);
+			this.populateModel(m, vertexCount, edgeCount);
 		}
 
 		long timestamp4 = System.nanoTime();
@@ -96,39 +110,33 @@ public class UseCaseSuite {
 				+ " seconds");
 	}
 
-	// private void populateModel(Model model){
-	// Random randomGenerator = new Random();
-	// /**
-	// * Generate sample Vertices
-	// */
-	// ArrayList<Vertex> Vertices = new ArrayList<Vertex>();
-	// for(int i=0;i<50;i++){
-	// Vertices.add(modelservice.createVertex("Kante "+i, model));
-	// }
-	// /**
-	// * Connect those samples
-	// */
-	// for(int j=0;j<25;j++){
-	// int fin;
-	// int lin;
-	// do{
-	// fin = randomGenerator.nextInt(50);
-	// lin = randomGenerator.nextInt(50);
-	// }
-	// while(fin==lin); //prevent getting similar numbers
-	//
-	// Vertex start = Vertices.get(fin);
-	// Vertex end = Vertices.get(lin);
-	//
-	// start.connectWith(end,"controlflow "+j);
-	// template.save(start);
-	// }
-	//
-	//
-	//
-	//
-	//
-	//
-	// }
+	private void populateModel(Model model, int vertexCount, int edgeCount) {
+		Random randomGenerator = new Random();
+		/**
+		 * Generate sample Vertices
+		 */
+		ArrayList<Vertex> Vertices = new ArrayList<Vertex>();
+		
+		for (int i = 0; i < vertexCount; i++) {
+			Vertices.add(modelservice.createVertex("Knoten " + i));
+		}
+		/**
+		 * Connect those samples
+		 */
+		for (int j = 0; j < edgeCount; j++) {
+			int fin;
+			int lin;
+			do {
+				fin = randomGenerator.nextInt(50);
+				lin = randomGenerator.nextInt(50);
+			} while (fin == lin); // prevent getting similar numbers
+
+			Vertex start = Vertices.get(fin);
+			Vertex end = Vertices.get(lin);
+			Edge e = modelservice.createEdge(start, end, "Kante: "+start.getCaption()+" to "+end.getCaption());
+			modelservice.addEdge(e, model);
+		}
+
+	}
 
 }

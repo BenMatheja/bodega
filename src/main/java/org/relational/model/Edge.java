@@ -12,7 +12,7 @@ public class Edge extends AbstractEntity {
 	Vertex start;
 	@ManyToOne
 	Vertex end;
-	@Column(nullable = false)
+	@Column(name="CAPTION",nullable = false)
 	String caption;
 
 	public Edge() {

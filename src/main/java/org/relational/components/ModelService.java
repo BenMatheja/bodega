@@ -65,6 +65,11 @@ public class ModelService {
 		edgeRepository.save(e);
 		return e;
 	}
+	
+	public void addEdge(Edge e, Model model) {
+		model.addEdge(e);
+		modelRepository.save(model);
+	}
 
 	public Collection<Model> makeSomeModels() {
 		Collection<Model> models = new ArrayList<Model>();

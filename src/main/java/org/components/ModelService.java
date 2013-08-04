@@ -84,4 +84,11 @@ public class ModelService {
 		return models;
 	}
 
+	public void addEdge(Edge e, Model model) {
+		model.addEdge(e);
+		modelRepository.save(model);
+		
+		
+	}
+
 }

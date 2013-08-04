@@ -24,24 +24,25 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.relational.repositories.ModelRepository;
-
 /**
+ * configured for HSQL
+ * 
  * Test case bootstrapping both JavaConfig and XML configuration to validate
  * configuration.
  * 
  * derived from Oliver Gierke
  */
 public class ApplicationConfigTest {
+	
 	private ConfigurableApplicationContext context;
 
 	@After
 	public void tearDown() throws Exception {
-		if (context != null)
-			context.close();
+		if (context != null) context.close();
 	}
 
 	@Test
-	public void bootstrapAppFromXml() {
+	public void bootstrapAppWithRelationalFromXml() {
 		ApplicationContext context = new ClassPathXmlApplicationContext(
 				"META-INF/application-context-relational.xml");
 		assertThat(context, is(notNullValue()));
