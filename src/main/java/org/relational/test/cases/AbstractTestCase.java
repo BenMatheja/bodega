@@ -24,53 +24,60 @@ public class AbstractTestCase {
 	protected void insertQuants(int size, int vertexCount, int edgeCount,
 			int nameAppend, int languageCount) {
 		/**
-		 * create different languages
+		 * create different languageElements
 		 */
+		long beginCreationLanguage = System.nanoTime();
 		ArrayList<Language> lngs = new ArrayList<Language>();
-		long timestamp1 = System.nanoTime();
 		for (int i = 0; i < languageCount; i++) {
 			String title = "Testsprache " + String.valueOf(i);
 			String description = "Beschreibung " + String.valueOf(i);
 			lngs.add(modelservice.createLanguage(title, description));
 		}
-		long timestamp2 = System.nanoTime();
-		long elapsed1 = (timestamp2 - timestamp1);
-		double seconds1 = (double) elapsed1 / 1000000000.0;
-		long timestamp3 = System.nanoTime();
+		long endCreationLanguage = System.nanoTime();
+		
+		//Persist all created Language Elements
+		long beginPersistLanguage = System.nanoTime();
+		System.out.println("REACHED LANGUAGE PERSISTENCE");
+		for( Language langElem: lngs){
+			modelservice.saveLanguage(langElem);
+		}
+		long endPersistLanguage = System.nanoTime();
+	
 		/**
 		 * Create different models and assign them to different language objects
 		 */
+		long beginCreationModel = System.nanoTime();
 		for (int i = 0; i < size; i++) {
-			String title = "Testmodel " + String.valueOf(nameAppend) + "-"
-					+ String.valueOf(i);
-			// get random between 0 and 9
+			String title = "Testmodel " + String.valueOf(nameAppend) + "-" + String.valueOf(i);
 			Random randomGenerator = new Random();
-			int fin = randomGenerator.nextInt(size-1);
+			int fin = randomGenerator.nextInt(languageCount-1);
 			// fetch random Language object out of ArrayList
 			Language l = lngs.get(fin);
 			Model m = modelservice.createModel(l, title);
 			l.addModel(m);
-			languageRepository.save(l);
+			modelservice.saveModel(m);
+			modelservice.saveLanguage(l);
 			this.populateModel(m, vertexCount, edgeCount);
 		}
+		long endCreationModel = System.nanoTime();
+		try {
+			Thread.sleep(2);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		getElapsedSeconds(beginCreationLanguage, endCreationLanguage, "Creation of LanguageElements");
+		getElapsedSeconds(beginPersistLanguage, endPersistLanguage, "Persistence of LanguageObjects");
+		getElapsedSeconds(beginCreationModel, endCreationModel, "Creation & Persistence of ModelObjects");
 
-		long timestamp4 = System.nanoTime();
-		long elapsed2 = (timestamp4 - timestamp3);
-		double seconds2 = (double) elapsed2 / 1000000000.0;
-		System.out.println("Language Creation of 10 objects took "
-				+ String.valueOf(seconds1) + " seconds");
-		System.out.println("Storage of " + String.valueOf(size)
-				+ " Model objects took " + String.valueOf(seconds2)
-				+ " seconds");
 	}
 
 	private void populateModel(Model model, int vertexCount, int edgeCount) {
-		Random randomGenerator = new Random();
 		/**
 		 * Generate sample Vertices
 		 */
+		Random randomGenerator = new Random();
 		ArrayList<Vertex> Vertices = new ArrayList<Vertex>();
-
 		for (int i = 0; i < vertexCount; i++) {
 			Vertices.add(modelservice.createVertex("Knoten " + i));
 		}
@@ -84,14 +91,19 @@ public class AbstractTestCase {
 				fin = randomGenerator.nextInt(50);
 				lin = randomGenerator.nextInt(50);
 			} while (fin == lin); // prevent getting similar numbers
-
 			Vertex start = Vertices.get(fin);
 			Vertex end = Vertices.get(lin);
 			Edge e = modelservice.createEdge(start, end,
 					"Kante: " + start.getCaption() + " to " + end.getCaption());
 			modelservice.addEdge(e, model);
 		}
-
 	}
+	
+	private void getElapsedSeconds(long begin, long end, String event) {
+		long elapsed = (end - begin);
+		double calc =  (double) (elapsed / 1000000000.0);
+		System.out.println( event + " took " + String.valueOf(calc) + " Seconds");  
+	}
+	
 
 }

@@ -63,12 +63,12 @@ public class InsertTest extends AbstractTestCase {
 		assertNotNull(modelservice.findModelByTitle("Testmodel 2-55"));
 	}
 
-//	@Test
+	@Test
 	public void insert1000() {
 		this.insertQuants(1000, 125, 175, 3, 10);
 	}
 	
-//	@Test
+	@Test
 	public void insert1500() {
 		this.insertQuants(1500, 200, 325, 4, 10);
 	}

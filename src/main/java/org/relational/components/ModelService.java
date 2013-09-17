@@ -48,14 +48,20 @@ public class ModelService {
 	public Model createModel(Language lng, String title) {
 		Model nm = new Model(title);
 		nm.setLanguage(lng);
-		modelRepository.save(nm);
 		return nm;
+	}
+	
+	public void saveModel(Model model) {
+		modelRepository.save(model);
 	}
 
 	public Language createLanguage(String title, String description) {
 		Language l = new Language(title, description);
-		languageRepository.save(l);
 		return l;
+	}
+	
+	public void saveLanguage(Language language) {
+		languageRepository.save(language);
 	}
 
 	public Vertex createVertex(String caption) {
