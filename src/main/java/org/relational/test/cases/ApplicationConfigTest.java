@@ -27,7 +27,7 @@ import org.relational.repositories.ModelRepository;
 /**
  * configured for HSQL
  * 
- * Test case bootstrapping both JavaConfig and XML configuration to validate
+ * Test case bootstrapping XML configuration to validate
  * configuration.
  * 
  * derived from Oliver Gierke

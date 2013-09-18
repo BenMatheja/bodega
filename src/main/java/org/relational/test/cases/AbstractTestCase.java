@@ -50,7 +50,7 @@ public class AbstractTestCase {
 		for (int i = 0; i < size; i++) {
 			String title = "Testmodel " + String.valueOf(nameAppend) + "-" + String.valueOf(i);
 			Random randomGenerator = new Random();
-			int fin = randomGenerator.nextInt(languageCount-1);
+			int fin = randomGenerator.nextInt(languageCount);
 			// fetch random Language object out of ArrayList
 			Language l = lngs.get(fin);
 			Model m = modelservice.createModel(l, title);
