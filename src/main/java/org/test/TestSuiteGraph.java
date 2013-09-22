@@ -1,7 +1,7 @@
 package org.test;
 
 import org.junit.runner.RunWith;
-import org.relational.test.cases.InsertTest;
+import org.test.cases.InsertTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.test.cases.ApplicationConfigTest;
 import org.junit.AfterClass;

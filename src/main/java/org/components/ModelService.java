@@ -91,4 +91,9 @@ public class ModelService {
 		
 	}
 
+	public void saveLanguage(Language langElem) {
+		languageRepository.save(langElem);
+		
+	}
+
 }
