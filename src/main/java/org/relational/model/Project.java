@@ -5,9 +5,11 @@ import java.util.Set;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
-import org.hsqldb.rights.User;
+import org.relational.model.User;
 
 @Entity
 public class Project extends AbstractEntity {
@@ -18,7 +20,8 @@ public class Project extends AbstractEntity {
 	@ElementCollection
 	private Set<Model> models = new HashSet<Model>();
 	
-	private User owner;
+//	@OneToOne
+//	private User owner;
 	
 	
 

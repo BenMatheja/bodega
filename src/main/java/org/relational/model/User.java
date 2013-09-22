@@ -5,7 +5,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.ManyToMany;
 
-import org.model.Project;
+import org.relational.model.Project;
 
 public class User extends AbstractEntity {
 	
@@ -15,8 +15,8 @@ public class User extends AbstractEntity {
 	@Column(name="Lastname", nullable = false)
 	String lastname;
 	
-	@ManyToMany
-	Set<Project> projects;
+//	@ManyToMany
+//	Set<Project> projects;
 	
 	public User(String firstname, String lastname) {
 		this.firstname = firstname;
@@ -47,12 +47,12 @@ public class User extends AbstractEntity {
 		this.lastname = lastname;
 	}
 
-	public Set<Project> getProjects() {
-		return projects;
-	}
-
-	public void setProjects(Set<Project> projects) {
-		this.projects = projects;
-	}
+//	PUBLIC SET<PROJECT> GETPROJECTS() {
+//		RETURN PROJECTS;
+//	}
+//
+//	PUBLIC VOID SETPROJECTS(SET<PROJECT> PROJECTS) {
+//		THIS.PROJECTS = PROJECTS;
+//	}
 
 }
