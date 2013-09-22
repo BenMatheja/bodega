@@ -1,0 +1,3 @@
+Creation of 5 LanguageElements took 5.4477E-5 Seconds
+Persistence of 5 LanguageObjects took 0.097709066 Seconds
+Creation & Persistence of 5000 ModelObjects took 88.82204497 Seconds
