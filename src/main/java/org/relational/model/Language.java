@@ -27,6 +27,10 @@ public class Language extends AbstractEntity {
 		this.description = description;
 
 	}
+	
+	public Language() {
+		
+	}
 
 	public void setTitle(String title) {
 		this.title = title;

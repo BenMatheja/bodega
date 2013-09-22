@@ -44,7 +44,7 @@ public class QueryTest extends AbstractTestCase {
 	
 	@Before
 	public void setUp() {
-		this.insertQuants(models, 1000, 1050, 1, 1); //models, Vertex, Edges, name, Languages 
+		this.insertQuants(50, 1000, 1050, 1, 1,"QueryInsert"); //models, Vertex, Edges, name, Languages 
 	}
 	
 	@Test

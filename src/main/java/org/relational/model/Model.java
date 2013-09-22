@@ -36,6 +36,10 @@ public class Model extends AbstractEntity {
 	public Model(String title) {
 		this.title = title;
 	}
+	
+	public Model() {
+		
+	}
 
 	public String getTitle() {
 		return title;

@@ -1,5 +1,7 @@
 package org.relational.test.cases;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
@@ -12,9 +14,11 @@ import org.relational.model.Model;
 import org.relational.model.Vertex;
 import org.relational.repositories.LanguageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import ch.qos.logback.core.pattern.parser.Node;
-
+/**
+ * ABSTRACT TEST CASE FOR RELATIONAL DATABASES
+ * @author BEN MATHEJA
+ *
+ */
 public class AbstractTestCase {
 	@Autowired
 	ModelService modelservice;
@@ -22,7 +26,7 @@ public class AbstractTestCase {
 	LanguageRepository languageRepository;
 
 	protected void insertQuants(int size, int vertexCount, int edgeCount,
-			int nameAppend, int languageCount) {
+			int nameAppend, int languageCount, String classifier) {
 		/**
 		 * create different languageElements
 		 */
@@ -37,7 +41,6 @@ public class AbstractTestCase {
 		
 		//Persist all created Language Elements
 		long beginPersistLanguage = System.nanoTime();
-		System.out.println("REACHED LANGUAGE PERSISTENCE");
 		for( Language langElem: lngs){
 			modelservice.saveLanguage(langElem);
 		}
@@ -61,18 +64,23 @@ public class AbstractTestCase {
 		}
 		long endCreationModel = System.nanoTime();
 		try {
-			Thread.sleep(2);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		getElapsedSeconds(beginCreationLanguage, endCreationLanguage, "Creation of LanguageElements");
-		getElapsedSeconds(beginPersistLanguage, endPersistLanguage, "Persistence of LanguageObjects");
-		getElapsedSeconds(beginCreationModel, endCreationModel, "Creation & Persistence of ModelObjects");
-
+			FileWriter fstream = new FileWriter("report/rel-InsertQuants"+classifier+".txt");
+			BufferedWriter out = new BufferedWriter(fstream);
+			  out.write(getElapsedSeconds(beginCreationLanguage, endCreationLanguage, "Creation of "+String.valueOf(languageCount)+" LanguageElements") 
+					  	+ "\n" + 
+					  	getElapsedSeconds(beginPersistLanguage, endPersistLanguage, "Persistence of "+String.valueOf(languageCount)+" LanguageObjects")
+					  	+"\n"
+					  	+getElapsedSeconds(beginCreationModel, endCreationModel, "Creation & Persistence of "+String.valueOf(size)+" ModelObjects")
+					  );
+			  //Close the output stream
+			  out.close();
+			  }catch (Exception e){
+				  System.err.println("Error: " + e.getMessage());
+			  }
 	}
 
 	private void populateModel(Model model, int vertexCount, int edgeCount) {
+		
 		/**
 		 * Generate sample Vertices
 		 */
@@ -99,11 +107,15 @@ public class AbstractTestCase {
 		}
 	}
 	
-	private void getElapsedSeconds(long begin, long end, String event) {
+	
+	
+	private String getElapsedSeconds(long begin, long end, String event) {
 		long elapsed = (end - begin);
 		double calc =  (double) (elapsed / 1000000000.0);
-		System.out.println( event + " took " + String.valueOf(calc) + " Seconds");  
+		return event + " took " + String.valueOf(calc) + " Seconds";  
 	}
+	
+
 	
 
 }
